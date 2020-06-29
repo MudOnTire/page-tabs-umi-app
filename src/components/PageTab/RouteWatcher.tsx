@@ -12,7 +12,6 @@ const RouteWatcher: React.FC<UmiComponentProps> = props => {
     const exists = newTabs.some(t => t.route.path === route.path);
     if (!exists) {
       const tab = { route, location, children };
-      console.log('create new tab === ', tab);
       newTabs.push(tab);
       dispatch({
         type: CONTEXT_ACTIONS.UPDATE_TABS,

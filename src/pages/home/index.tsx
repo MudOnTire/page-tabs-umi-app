@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 
 export default () => {
+  console.log('in home');
+
   let [count, setCount] = useState(0);
   return (
     <>
