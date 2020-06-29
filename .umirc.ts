@@ -12,9 +12,7 @@ export default defineConfig({
   routes: [
     {
       path: '/',
-      component: '@/layouts/TabLayout',
-      name: 'Layout',
-      icon: 'smile',
+      component: '@/components/PageTab/TabLayout',
       flatMenu: true,
       routes: [
         {
@@ -22,12 +20,14 @@ export default defineConfig({
           icon: 'smile',
           path: '/home',
           component: '@/pages/home',
+          wrappers: ['@/components/PageTab/RouteWatcher'],
         },
         {
           name: 'About',
           icon: 'smile',
           path: '/about',
           component: '@/pages/about',
+          wrappers: ['@/components/PageTab/RouteWatcher'],
         },
         {
           exact: true,
