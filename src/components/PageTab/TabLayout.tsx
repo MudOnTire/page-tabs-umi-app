@@ -1,17 +1,31 @@
 import React, { useState, useContext, Fragment } from 'react';
 import { Tabs } from 'antd';
+import { history } from 'umi';
 import { context, provider as TabsProvider } from './context';
 import { UmiComponentProps } from './types';
 
 const { TabPane } = Tabs;
 
-const TabBar: React.FC<{}> = () => {
+const TabBar: React.FC<{ location: any }> = () => {
   const store = useContext(context);
   const { tabs } = store;
-  const handleTabChange = () => {};
+
+  const handleTabChange = (key: string) => {
+    const tab = tabs.find(t => t.route.path === key);
+    if (tab) {
+      history.push(tab.location);
+    }
+  };
+
+  console.log('tabs === ', tabs);
 
   return (
-    <Tabs hideAdd type="editable-card" onChange={handleTabChange}>
+    <Tabs
+      hideAdd
+      type="editable-card"
+      onChange={handleTabChange}
+      activeKey={location.pathname}
+    >
       {tabs.map(tab => {
         return (
           <TabPane tab={tab.route.name} key={tab.route.path}>
@@ -57,7 +71,7 @@ const TabLayout: React.FC<UmiComponentProps> = props => {
 
   return (
     <TabsProvider>
-      <TabBar />
+      <TabBar location={location} />
       <TabBarContent location={location} defaultChildren={children} />
     </TabsProvider>
   );

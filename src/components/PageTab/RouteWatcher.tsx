@@ -5,10 +5,9 @@ import { CONTEXT_ACTIONS, UmiComponentProps } from './types';
 const RouteWatcher: React.FC<UmiComponentProps> = props => {
   const store = useContext(context);
   const { tabs, dispatch } = store;
-  const { children, route } = props;
+  const { children, route, location } = props;
 
   const updateTabs = () => {
-    console.log('');
     const newTabs = [...tabs];
     const exists = newTabs.some(t => t.route.path === route.path);
     if (!exists) {
