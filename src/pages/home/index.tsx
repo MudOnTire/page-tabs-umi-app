@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default () => {
-  console.log('in index');
-  return <h1>Welcome to umi</h1>;
+  let [count, setCount] = useState(0);
+  return (
+    <>
+      <h1>Home Page</h1>
+
+      <h2>{count}</h2>
+
+      <button
+        onClick={() => {
+          setCount(count + 1);
+        }}
+      >
+        Click Me
+      </button>
+    </>
+  );
 };

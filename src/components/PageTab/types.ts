@@ -30,3 +30,12 @@ export interface ContextAction {
   type: CONTEXT_ACTIONS;
   payload: Array<Tab>;
 }
+
+export interface UmiComponentProps {
+  children: React.ReactNode;
+  history: History;
+  location: any;
+  match: { isExact: boolean; params: Object; path: string; url: string };
+  route: IRoute;
+  routes: IRoute[];
+}
