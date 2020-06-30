@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Tabs } from 'antd';
-import { history } from 'umi';
+// import { history } from 'umi';
 import { context, provider as TabsProvider } from './context';
 import { UmiComponentProps, CONTEXT_ACTIONS } from './types';
 import { isTabActive } from './utils';
@@ -13,12 +13,13 @@ const { TabPane } = Tabs;
  */
 const TabBar: React.FC<{
   location: any;
+  history: any;
   defaultChildren: React.ReactNode;
 }> = props => {
   const store = useContext(context);
   const { tabs, dispatch } = store;
 
-  const { location, defaultChildren } = props;
+  const { location, defaultChildren, history } = props;
   const isLocationInTab = tabs.some(
     tab => tab.location.pathname === location.pathname,
   );
@@ -79,10 +80,14 @@ const TabBar: React.FC<{
 };
 
 const TabLayout: React.FC<UmiComponentProps> = props => {
-  const { children, location } = props;
+  const { children, location, history } = props;
   return (
     <TabsProvider>
-      <TabBar location={location} defaultChildren={children} />
+      <TabBar
+        history={history}
+        location={location}
+        defaultChildren={children}
+      />
     </TabsProvider>
   );
 };
