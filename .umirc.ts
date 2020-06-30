@@ -39,6 +39,21 @@ export default defineConfig({
           wrappers: [RouteWatcher],
         },
         {
+          name: 'Posts',
+          icon: 'smile',
+          path: '/posts',
+          component: '@/pages/postList',
+          wrappers: [RouteWatcher],
+        },
+        {
+          name: 'PostDetail',
+          icon: 'smile',
+          path: '/post/:id',
+          component: '@/pages/postDetail',
+          wrappers: [RouteWatcher],
+          menu: false,
+        },
+        {
           exact: true,
           path: '/',
           redirect: '/home',

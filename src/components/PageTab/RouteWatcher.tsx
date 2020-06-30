@@ -21,7 +21,7 @@ const RouteWatcher: React.FC<UmiComponentProps> = props => {
   };
 
   useEffect(updateTabs, []);
-  return <>{children}</>;
+  return <></>;
 };
 
 export default RouteWatcher;

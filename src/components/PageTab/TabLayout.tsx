@@ -1,4 +1,4 @@
-import React, { useState, useContext, Fragment } from 'react';
+import React, { useContext } from 'react';
 import { Tabs } from 'antd';
 import { history } from 'umi';
 import { context, provider as TabsProvider } from './context';
@@ -10,9 +10,17 @@ const { TabPane } = Tabs;
 /**
  * TabBar component placed on top of a page
  */
-const TabBar: React.FC<{ location: any }> = () => {
+const TabBar: React.FC<{
+  location: any;
+  defaultChildren: React.ReactNode;
+}> = props => {
   const store = useContext(context);
   const { tabs, dispatch } = store;
+
+  const { location, defaultChildren } = props;
+  const isLocationInTab = tabs.some(
+    tab => tab.route.path === location.pathname,
+  );
 
   const handleTabChange = (key: string) => {
     const tab = tabs.find(t => t.route.path === key);
@@ -48,50 +56,22 @@ const TabBar: React.FC<{ location: any }> = () => {
   };
 
   return (
-    <Tabs
-      hideAdd
-      type="editable-card"
-      onChange={handleTabChange}
-      onEdit={handleEdit}
-      activeKey={location.pathname}
-    >
-      {tabs.map(tab => {
-        return (
-          <TabPane tab={tab.route.name} key={tab.route.path}>
-            {tab.route.children}
-          </TabPane>
-        );
-      })}
-    </Tabs>
-  );
-};
-
-/**
- * Tab content to display pages
- */
-const TabContent: React.FC<{
-  location: any;
-  defaultChildren: React.ReactNode;
-}> = props => {
-  const store = useContext(context);
-  const { tabs } = store;
-  const { location, defaultChildren } = props;
-  const isLocationInTab = tabs.some(
-    tab => tab.route.path === location.pathname,
-  );
-  return (
     <>
-      {tabs.map(tab => {
-        const isActive = tab.route.path === location.pathname;
-        return (
-          <div
-            key={tab.route.path}
-            style={{ display: isActive ? 'block' : 'none' }}
-          >
-            {tab.children}
-          </div>
-        );
-      })}
+      <Tabs
+        hideAdd
+        type="editable-card"
+        onChange={handleTabChange}
+        onEdit={handleEdit}
+        activeKey={location.pathname}
+      >
+        {tabs.map(tab => {
+          return (
+            <TabPane tab={tab.route.name} key={tab.route.path}>
+              {tab.children}
+            </TabPane>
+          );
+        })}
+      </Tabs>
       {!isLocationInTab && defaultChildren}
     </>
   );
@@ -101,8 +81,7 @@ const TabLayout: React.FC<UmiComponentProps> = props => {
   const { children, location } = props;
   return (
     <TabsProvider>
-      <TabBar location={location} />
-      <TabContent location={location} defaultChildren={children} />
+      <TabBar location={location} defaultChildren={children} />
     </TabsProvider>
   );
 };

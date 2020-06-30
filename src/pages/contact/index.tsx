@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class index extends Component {
+export default class Contact extends Component {
   state = {
     count: 0,
   };
