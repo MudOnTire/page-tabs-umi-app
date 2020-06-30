@@ -48,7 +48,7 @@ export default defineConfig({
         {
           name: 'PostDetail',
           icon: 'smile',
-          path: '/post/:id',
+          path: '/posts/:id',
           component: '@/pages/postDetail',
           wrappers: [RouteWatcher],
           menu: false,

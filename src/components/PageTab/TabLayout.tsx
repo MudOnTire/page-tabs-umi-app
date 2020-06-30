@@ -19,11 +19,11 @@ const TabBar: React.FC<{
 
   const { location, defaultChildren } = props;
   const isLocationInTab = tabs.some(
-    tab => tab.route.path === location.pathname,
+    tab => tab.location.pathname === location.pathname,
   );
 
   const handleTabChange = (key: string) => {
-    const tab = tabs.find(t => t.route.path === key);
+    const tab = tabs.find(t => t.location.pathname === key);
     if (tab) {
       history.push(tab.location);
     }
@@ -36,7 +36,7 @@ const TabBar: React.FC<{
    */
   const handleEdit = (tabKey: any, action: 'add' | 'remove') => {
     if (action === 'remove') {
-      const tabIndex = tabs.findIndex(tab => tab.route.path === tabKey);
+      const tabIndex = tabs.findIndex(tab => tab.location.path === tabKey);
       if (tabIndex < 0) return;
       let nextActiveTab;
       if (isTabActive(tabKey, location)) {
@@ -56,7 +56,7 @@ const TabBar: React.FC<{
   };
 
   return (
-    <>
+    <div style={{ backgroundColor: '#fff' }}>
       <Tabs
         hideAdd
         type="editable-card"
@@ -66,14 +66,14 @@ const TabBar: React.FC<{
       >
         {tabs.map(tab => {
           return (
-            <TabPane tab={tab.route.name} key={tab.route.path}>
+            <TabPane tab={tab.route.name} key={tab.location.pathname}>
               {tab.children}
             </TabPane>
           );
         })}
       </Tabs>
       {!isLocationInTab && defaultChildren}
-    </>
+    </div>
   );
 };
 
