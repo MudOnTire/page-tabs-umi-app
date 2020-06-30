@@ -23,6 +23,7 @@ export default () => {
 
   return (
     <ul>
+      <h1 style={{ fontSize: 30 }}>Posts from Jsonplaceholder</h1>
       {posts.map(post => {
         return (
           <li key={post.id}>

@@ -6,11 +6,11 @@ export default class Contact extends Component {
   };
 
   render() {
-    console.log('in contact');
     const { count } = this.state;
     return (
-      <div>
-        <h1>Contact count: {count}</h1>
+      <div style={{ padding: 20 }}>
+        <h1>Contact me if you need me.. 😄</h1>
+        <h1>Count2: {count}</h1>
         <button
           onClick={() => {
             this.setState(state => {

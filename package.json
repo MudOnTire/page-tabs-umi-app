@@ -23,7 +23,7 @@
     "@ant-design/pro-layout": "6.0.0-8",
     "@umijs/preset-react": "1.x",
     "@umijs/test": "^3.2.6",
-    "antd-pro-page-tabs": "^0.0.1",
+    "antd-pro-page-tabs": "^0.0.5",
     "lint-staged": "^10.0.7",
     "lodash": "^4.17.15",
     "prettier": "^1.19.1",

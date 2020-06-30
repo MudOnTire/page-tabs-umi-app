@@ -1,6 +1,5 @@
 import React from 'react';
 
 export default () => {
-  console.log('in about');
-  return <h1>About</h1>;
+  return <h1 style={{ padding: 20 }}>Do you know anything about me? 😊</h1>;
 };
