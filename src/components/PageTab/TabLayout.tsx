@@ -4,6 +4,7 @@ import { history } from 'umi';
 import { context, provider as TabsProvider } from './context';
 import { UmiComponentProps, CONTEXT_ACTIONS } from './types';
 import { isTabActive } from './utils';
+import styles from './index.less';
 
 const { TabPane } = Tabs;
 
@@ -36,7 +37,7 @@ const TabBar: React.FC<{
    */
   const handleEdit = (tabKey: any, action: 'add' | 'remove') => {
     if (action === 'remove') {
-      const tabIndex = tabs.findIndex(tab => tab.location.path === tabKey);
+      const tabIndex = tabs.findIndex(tab => tab.location.pathname === tabKey);
       if (tabIndex < 0) return;
       let nextActiveTab;
       if (isTabActive(tabKey, location)) {
@@ -56,7 +57,7 @@ const TabBar: React.FC<{
   };
 
   return (
-    <div style={{ backgroundColor: '#fff' }}>
+    <div className={styles.tabContainer}>
       <Tabs
         hideAdd
         type="editable-card"
