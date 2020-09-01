@@ -6,6 +6,12 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  locale: {
+    default: 'zh-CN',
+    antd: true,
+    baseNavigator: true,
+    baseSeparator: '-',
+  },
   layout: {
     name: 'Ant Design Pro',
     locale: true,
@@ -19,6 +25,7 @@ export default defineConfig({
       routes: [
         {
           name: 'Home',
+          tabLocalId: 'menu.Home',
           icon: 'smile',
           path: '/home',
           component: '@/pages/home',
@@ -26,6 +33,7 @@ export default defineConfig({
         },
         {
           name: 'About',
+          tabLocalId: 'menu.About',
           icon: 'smile',
           path: '/about',
           component: '@/pages/about',
@@ -33,6 +41,7 @@ export default defineConfig({
         },
         {
           name: 'Contact',
+          tabLocalId: 'menu.Contact',
           icon: 'smile',
           path: '/contact',
           component: '@/pages/contact',
@@ -40,6 +49,7 @@ export default defineConfig({
         },
         {
           name: 'Posts',
+          tabLocalId: 'menu.Posts',
           icon: 'smile',
           path: '/posts',
           component: '@/pages/postList',
@@ -47,6 +57,7 @@ export default defineConfig({
         },
         {
           name: 'PostDetail',
+          tabLocalId: 'menu.PostDetail',
           icon: 'smile',
           path: '/posts/:id',
           component: '@/pages/postDetail',
