@@ -59,7 +59,7 @@ export default defineConfig({
           name: 'PostDetail',
           tabLocalId: 'menu.PostDetail',
           icon: 'smile',
-          path: '/posts/:id',
+          path: '/posts/detail',
           component: '@/pages/postDetail',
           wrappers: [RouteWatcher],
           menu: false,
