@@ -65,6 +65,15 @@ export default defineConfig({
           menu: false,
         },
         {
+          name: 'PostDetail2',
+          tabLocalId: 'menu.PostDetail2',
+          icon: 'smile',
+          path: '/posts/:postId',
+          component: '@/pages/postDetail2',
+          wrappers: [RouteWatcher],
+          menu: false,
+        },
+        {
           exact: true,
           path: '/',
           redirect: '/home',

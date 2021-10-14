@@ -4,4 +4,5 @@ export default {
   'menu.Contact': 'Contact',
   'menu.Posts': 'Posts',
   'menu.PostDetail': 'PostDetail',
+  'menu.PostDetail2': 'PostDetail2',
 };

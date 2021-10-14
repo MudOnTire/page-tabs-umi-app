@@ -30,6 +30,8 @@ export default () => {
             <h2>{post.title}</h2>
             <p>Created by user {post.userId}</p>
             <Link to={`/posts/detail?id=${post.id}`}>Detail</Link>
+            <br />
+            <Link to={`/posts/${post.id}`}>Detail2</Link>
           </li>
         );
       })}

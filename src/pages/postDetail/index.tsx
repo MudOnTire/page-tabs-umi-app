@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
 import styles from './index.css';
 
 interface Detail {
@@ -12,6 +12,7 @@ interface Detail {
 export default (props: any) => {
   const [detail, setDetail] = useState<Detail>();
   const location = useLocation();
+  const history = useHistory();
 
   const id = useMemo(() => {
     return location.query.id;
@@ -30,6 +31,13 @@ export default (props: any) => {
 
   return (
     <div className={styles.container}>
+      <button
+        onClick={() => {
+          history.push('/posts/detail?id=2');
+        }}
+      >
+        click
+      </button>
       <h1 className={styles.title}>{detail?.title}</h1>
       <p>{detail?.body}</p>
     </div>
